@@ -1,290 +1,575 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Eco Bottles - Dual Language Demo</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agroliance Phosphate India | B2B Dealer Portal</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f0fdf4',
+              100: '#dcfce7',
+              600: '#16a34a',
+              700: '#15803d',
+              800: '#166534',
+              900: '#14532d',
+              dark: '#0a381e'
+            },
+            accent: {
+              400: '#facc15',
+              500: '#eab308',
+              600: '#ca8a04',
+              700: '#a16207'
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', '"Noto Sans Devanagari"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
   <style>
-    /* 1. Global Reset & Base Styling */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-
-    body {
-      background-color: #f8faf8;
-      color: #2d3748;
-      line-height: 1.6;
-    }
-
-    /* 2. Responsive Navigation Bar */
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      background-color: #ffffff;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    .logo {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #2e7d32;
-    }
-
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 1.5rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      color: #4a5568;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover {
-      color: #2e7d32;
-    }
-
-    /* Language Switcher Button */
-    .lang-btn {
-      background-color: #e8f5e9;
-      color: #1b5e20;
-      border: 1px solid #a5d6a7;
-      padding: 0.4rem 1rem;
-      border-radius: 20px;
-      cursor: pointer;
-      font-weight: 600;
-      font-size: 0.9rem;
-      transition: all 0.2s;
-    }
-
-    .lang-btn:hover {
-      background-color: #c8e6c9;
-    }
-
-    /* Mobile Hamburger Icon */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 4px;
-      cursor: pointer;
-    }
-
-    .hamburger span {
-      width: 24px;
-      height: 3px;
-      background-color: #2d3748;
-      border-radius: 2px;
-    }
-
-    /* 3. Hero Section & Image Fix */
-    .container {
-      max-width: 1100px;
-      margin: 2.5rem auto;
-      padding: 0 1.5rem;
-    }
-
-    .hero {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 2.5rem;
-      background: #ffffff;
-      border-radius: 16px;
-      padding: 3rem 2.5rem;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
-    }
-
-    .hero-content {
-      flex: 1;
-    }
-
-    .hero-content h1 {
-      font-size: 2.3rem;
-      color: #1b365d;
-      margin-bottom: 1rem;
-      line-height: 1.25;
-    }
-
-    .hero-content p {
-      font-size: 1.05rem;
-      color: #4a5568;
-      margin-bottom: 1.8rem;
-    }
-
-    .btn-primary {
-      display: inline-block;
-      background-color: #2e7d32;
-      color: #ffffff;
-      padding: 0.8rem 1.8rem;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: background 0.2s;
-    }
-
-    .btn-primary:hover {
-      background-color: #1b5e20;
-    }
-
-    /* Fixed Image Container Styling */
-    .hero-image {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: #f4f8f4;
-      border-radius: 12px;
-      padding: 1.5rem;
-      overflow: hidden;
-    }
-
-    .hero-image img {
-      width: 100%;
-      max-height: 380px;
-      object-fit: contain; /* Prevents cropping and keeps the whole bottle visible */
-      border-radius: 8px;
-    }
-
-    /* 4. Mobile Responsiveness */
-    @media (max-width: 768px) {
-      .hamburger {
-        display: flex;
-      }
-
-      .nav-links {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background-color: #ffffff;
-        padding: 1.2rem 2rem;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      }
-
-      .nav-links.active {
-        display: flex;
-      }
-
-      .hero {
-        flex-direction: column-reverse;
-        text-align: center;
-        padding: 1.8rem 1.2rem;
-      }
-
-      .hero-image img {
-        max-height: 280px;
-      }
-
-      .hero-content h1 {
-        font-size: 1.75rem;
-      }
-
-      .hero-content p {
-        font-size: 0.98rem;
-      }
-
-      .btn-primary {
-        width: 100%;
-        text-align: center;
-      }
+    /* DUAL LANGUAGE SYSTEM CSS */
+    body.lang-hi .lang-en { display: none !important; }
+    body.lang-en .lang-hi { display: none !important; }
+    
+    /* UI Effects */
+    .bg-pattern {
+      background-image: radial-gradient(#15803d 1px, transparent 1px), radial-gradient(#15803d 1px, #f0fdf4 1px);
+      background-size: 40px 40px;
+      background-position: 0 0, 20px 20px;
+      opacity: 0.1;
     }
   </style>
 </head>
-<body>
+<!-- Default Language set to English -->
+<body class="lang-en bg-slate-50 text-slate-800 font-sans antialiased">
 
-  <!-- Header / Navigation Bar -->
-  <nav class="navbar">
-    <div class="logo">EcoBottles</div>
-
-    <div class="nav-right">
-      <button class="lang-btn" id="langToggle" onclick="toggleLanguage()">हिंदी</button>
+  <!-- TOP BAR -->
+  <div class="bg-brand-900 text-white text-xs py-2 px-4 border-b border-brand-800">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-3 text-center sm:text-left">
+      <div class="flex items-center gap-2">
+        <span class="bg-accent-500 text-brand-900 font-extrabold text-[10px] px-2 py-0.5 rounded uppercase">
+          <span class="lang-en">Award 2026</span>
+          <span class="lang-hi">पुरस्कार 2026</span>
+        </span>
+        <span class="font-medium text-amber-300">
+          <span class="lang-en">CMD Mr. Krishnapal Singh Tomar wins "Bharat Samman"</span>
+          <span class="lang-hi">CMD श्री कृष्णपाल सिंह तोमर को "भारत सम्मान" से सम्मानित किया गया</span>
+        </span>
+      </div>
       
-      <div class="hamburger" onclick="toggleMenu()">
-        <span></span>
-        <span></span>
-        <span></span>
+      <div class="flex items-center gap-4 w-full sm:w-auto justify-between sm:justify-end">
+        <a href="tel:+918889659090" class="hover:text-accent-400 font-bold flex items-center gap-1">
+          <i class="fa-solid fa-phone text-accent-400"></i> +91 88896 59090
+        </a>
+        
+        <!-- LANGUAGE TOGGLE BUTTON -->
+        <button onclick="toggleLanguage()" class="bg-white/20 hover:bg-white/30 text-white px-3 py-1 rounded-full text-xs font-bold border border-white/30 transition flex items-center gap-1">
+          <i class="fa-solid fa-language text-accent-400"></i> 
+          <span class="lang-en">हिंदी में देखें</span>
+          <span class="lang-hi">View in English</span>
+        </button>
       </div>
-
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#" data-en="Home" data-hi="होम">Home</a></li>
-        <li><a href="#" data-en="Products" data-hi="उत्पाद">Products</a></li>
-        <li><a href="#" data-en="About Us" data-hi="हमारे बारे में">About Us</a></li>
-        <li><a href="#" data-en="Contact" data-hi="संपर्क करें">Contact</a></li>
-      </ul>
     </div>
-  </nav>
+  </div>
 
-  <!-- Hero Container -->
-  <main class="container">
-    <section class="hero">
-      <div class="hero-content">
-        <h1 id="heroTitle">Eco-Friendly Natural Water Bottles</h1>
-        <p id="heroDesc">
-          100% natural, durable, and good for the planet. Made from eco-friendly materials to help replace single-use plastic.
+  <!-- NAVIGATION -->
+  <header class="sticky top-0 z-40 bg-white shadow-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16 sm:h-20">
+        
+        <!-- LOGO -->
+        <a href="#" class="flex items-center gap-3">
+          <div class="w-10 h-10 sm:w-12 sm:h-12 bg-brand-800 rounded-lg flex items-center justify-center text-accent-400 shadow-md">
+            <i class="fa-solid fa-wheat-awn text-xl sm:text-2xl"></i>
+          </div>
+          <div>
+            <div class="text-lg sm:text-xl font-extrabold text-brand-900 leading-none">AGROLIANCE</div>
+            <div class="text-[9px] sm:text-[10px] font-bold text-accent-600 uppercase mt-0.5">Phosphate India Pvt. Ltd.</div>
+          </div>
+        </a>
+
+        <!-- DESKTOP MENU -->
+        <nav class="hidden md:flex items-center space-x-6 text-sm font-bold text-slate-700">
+          <a href="#about" class="hover:text-brand-700 transition">
+            <span class="lang-en">Company</span><span class="lang-hi">कंपनी</span>
+          </a>
+          <a href="#products" class="hover:text-brand-700 transition">
+            <span class="lang-en">Products</span><span class="lang-hi">उत्पाद (Products)</span>
+          </a>
+          <a href="#quality" class="hover:text-brand-700 transition">
+            <span class="lang-en">Quality</span><span class="lang-hi">क्वालिटी (Quality)</span>
+          </a>
+          <a href="#calculator" class="hover:text-brand-700 transition">
+            <span class="lang-en">Calculator</span><span class="lang-hi">वजन कैलकुलेटर</span>
+          </a>
+        </nav>
+
+        <!-- DEALER BUTTON -->
+        <div class="hidden sm:flex items-center">
+          <a href="#dealer-form" class="bg-brand-700 text-white hover:bg-brand-800 px-4 py-2 rounded-lg text-sm font-bold shadow transition">
+            <span class="lang-en">Become a Dealer</span><span class="lang-hi">डीलर बनें</span>
+          </a>
+        </div>
+
+        <!-- MOBILE MENU ICON -->
+        <button onclick="toggleMobileMenu()" class="md:hidden text-slate-800 text-2xl p-2">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- MOBILE DROPDOWN -->
+    <div id="mobileMenu" class="hidden md:hidden bg-slate-50 border-t border-slate-200 px-4 pt-2 pb-4 space-y-2 shadow-inner">
+      <a href="#about" onclick="toggleMobileMenu()" class="block py-2 font-bold text-slate-700 border-b border-slate-200">
+        <span class="lang-en">Company Profile</span><span class="lang-hi">कंपनी की जानकारी</span>
+      </a>
+      <a href="#products" onclick="toggleMobileMenu()" class="block py-2 font-bold text-slate-700 border-b border-slate-200">
+        <span class="lang-en">Products Catalog</span><span class="lang-hi">उत्पाद सूची (Products)</span>
+      </a>
+      <a href="#calculator" onclick="toggleMobileMenu()" class="block py-2 font-bold text-slate-700 border-b border-slate-200">
+        <span class="lang-en">Order Calculator</span><span class="lang-hi">ऑर्डर का वजन निकालें</span>
+      </a>
+      <a href="#dealer-form" onclick="toggleMobileMenu()" class="block text-center bg-brand-700 text-white mt-4 py-3 rounded-lg font-bold">
+        <span class="lang-en">Apply for Dealership</span><span class="lang-hi">डीलरशिप के लिए फॉर्म भरें</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="relative bg-brand-900 text-white py-12 sm:py-20 overflow-hidden">
+    <div class="absolute inset-0 bg-pattern"></div>
+    
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+        
+        <!-- Text Content -->
+        <div class="text-center lg:text-left space-y-6">
+          <div class="inline-block bg-white/10 border border-white/20 px-4 py-1.5 rounded-full text-xs sm:text-sm font-bold text-accent-400">
+            <span class="lang-en">India's Trusted Fertilizer Brand</span>
+            <span class="lang-hi">भारत का भरोसेमंद खाद ब्रांड</span>
+          </div>
+
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight">
+            <span class="lang-en">Healthy Soil.<br>Good Yield.<br><span class="text-accent-400">Great Profits.</span></span>
+            <span class="lang-hi">अच्छी मिट्टी.<br>बंपर पैदावार.<br><span class="text-accent-400">शानदार मुनाफा.</span></span>
+          </h1>
+
+          <p class="text-slate-200 text-sm sm:text-base max-w-lg mx-auto lg:mx-0">
+            <span class="lang-en">Buy direct from our Nimrani (M.P.) factory. We supply 100% certified organic manure (Krishidhan) and imported water-soluble fertilizers (Saroj) to dealers across India.</span>
+            <span class="lang-hi">निमरानी (म.प्र.) फैक्ट्री से सीधे खरीदें। हम 100% प्रमाणित जैविक खाद (कृषिधन) और आयातित पानी में घुलनशील खाद (सरोज) पूरे भारत में डीलरों को सप्लाई करते हैं।</span>
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
+            <a href="#dealer-form" class="bg-accent-500 hover:bg-accent-600 text-brand-900 font-extrabold px-6 py-4 rounded-xl text-center shadow-lg text-sm sm:text-base">
+              <i class="fa-solid fa-store mr-2"></i> 
+              <span class="lang-en">Start Dealership Today</span>
+              <span class="lang-hi">आज ही डीलरशिप शुरू करें</span>
+            </a>
+            <a href="#products" class="bg-white/10 hover:bg-white/20 border border-white/30 text-white font-bold px-6 py-4 rounded-xl text-center text-sm sm:text-base transition">
+              <i class="fa-solid fa-box mr-2"></i> 
+              <span class="lang-en">View Products</span>
+              <span class="lang-hi">उत्पाद (Products) देखें</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Highlight Box -->
+        <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-6 sm:p-8 shadow-2xl">
+          <h3 class="text-xl sm:text-2xl font-bold text-accent-400 text-center mb-6">
+            <span class="lang-en">Why Partner With Us?</span>
+            <span class="lang-hi">हमारे साथ क्यों जुड़ें?</span>
+          </h3>
+          
+          <div class="space-y-4 text-sm sm:text-base">
+            <div class="flex items-center gap-3 bg-black/20 p-3 rounded-lg">
+              <i class="fa-solid fa-check-circle text-emerald-400 text-xl"></i>
+              <span class="font-medium">
+                <span class="lang-en">Direct Factory Supply (Good Margins)</span>
+                <span class="lang-hi">फैक्ट्री से सीधा माल (अच्छा मार्जिन)</span>
+              </span>
+            </div>
+            <div class="flex items-center gap-3 bg-black/20 p-3 rounded-lg">
+              <i class="fa-solid fa-check-circle text-emerald-400 text-xl"></i>
+              <span class="font-medium">
+                <span class="lang-en">100% FCO Govt. Lab Tested</span>
+                <span class="lang-hi">100% सरकारी FCO लैब द्वारा पास</span>
+              </span>
+            </div>
+            <div class="flex items-center gap-3 bg-black/20 p-3 rounded-lg">
+              <i class="fa-solid fa-check-circle text-emerald-400 text-xl"></i>
+              <span class="font-medium">
+                <span class="lang-en">Dubai Imported High-Quality Products</span>
+                <span class="lang-hi">दुबई से आयातित उच्च गुणवत्ता वाले उत्पाद</span>
+              </span>
+            </div>
+          </div>
+          
+          <a href="https://wa.me/918889659090" target="_blank" class="block w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 rounded-xl text-center mt-6 shadow-md transition">
+            <i class="fa-brands fa-whatsapp text-lg mr-1"></i> WhatsApp Inquiry
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- LEADERSHIP SECTION -->
+  <section id="about" class="py-12 sm:py-16 bg-white border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-slate-50 border border-slate-200 rounded-3xl p-6 sm:p-10 flex flex-col md:flex-row items-center gap-8 shadow-sm">
+        
+        <div class="w-full md:w-1/3 text-center md:text-left">
+          <div class="text-6xl text-accent-500 mb-4"><i class="fa-solid fa-award"></i></div>
+          <h2 class="text-2xl font-extrabold text-slate-900">
+            <span class="lang-en">Bharat Samman 2026</span>
+            <span class="lang-hi">भारत सम्मान 2026</span>
+          </h2>
+          <p class="text-sm font-bold text-brand-700 mt-1">
+            <span class="lang-en">National Award Winner</span>
+            <span class="lang-hi">राष्ट्रीय पुरस्कार विजेता</span>
+          </p>
+        </div>
+
+        <div class="w-full md:w-2/3 space-y-4 text-center md:text-left border-t md:border-t-0 md:border-l border-slate-300 pt-6 md:pt-0 md:pl-8">
+          <h3 class="text-xl sm:text-2xl font-bold text-slate-900">Mr. Krishnapal Singh Tomar</h3>
+          <p class="text-xs font-bold uppercase text-slate-500">
+            <span class="lang-en">Chairman & Managing Director (CMD)</span>
+            <span class="lang-hi">चेयरमैन और प्रबंध निदेशक (CMD)</span>
+          </p>
+          <div class="bg-brand-100 p-4 rounded-xl border-l-4 border-brand-600 text-brand-900 font-bold italic">
+            <span class="lang-en">"Healthy Soil, Healthy Crop, Healthy Nation."</span>
+            <span class="lang-hi">"स्वस्थ मिट्टी, स्वस्थ फसल, स्वस्थ राष्ट्र।"</span>
+          </div>
+          <p class="text-sm text-slate-600">
+            <span class="lang-en">Our CMD's vision is to help farmers grow better crops without harming the soil. By providing world-class organic and imported fertilizers, we are building a profitable network for our dealers and a greener future for India.</span>
+            <span class="lang-hi">हमारे CMD का लक्ष्य है कि किसान मिट्टी को नुकसान पहुंचाए बिना अच्छी फसल उगाएं। विश्व स्तरीय जैविक और आयातित खाद देकर, हम अपने डीलरों के लिए एक लाभदायक नेटवर्क और भारत के लिए एक हरा-भरा भविष्य बना रहे हैं।</span>
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS SECTION -->
+  <section id="products" class="py-12 sm:py-16 bg-slate-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center mb-10">
+        <h2 class="text-3xl font-extrabold text-slate-900">
+          <span class="lang-en">Our Products</span>
+          <span class="lang-hi">हमारे उत्पाद (Products)</span>
+        </h2>
+        <p class="text-sm text-slate-600 mt-2">
+          <span class="lang-en">Premium Organic Bags (50kg) & Water Soluble Specialty Pouches (1kg)</span>
+          <span class="lang-hi">प्रीमियम जैविक खाद (50 किलो बैग) और पानी में घुलनशील खाद (1 किलो पाउच)</span>
         </p>
-        <a href="#" class="btn-primary" id="heroBtn">Buy Now</a>
       </div>
-      <div class="hero-image">
-        <img id="bottleImg" src="https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=600&q=80" alt="Eco Water Bottle" />
-      </div>
-    </section>
-  </main>
 
-  <!-- JavaScript logic -->
+      <!-- Product Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <!-- PROM -->
+        <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow hover:shadow-lg transition flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-center mb-3">
+              <span class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-1 rounded">Krishidhan</span>
+              <span class="bg-slate-100 text-slate-600 text-[10px] font-bold px-2 py-1 rounded">50 kg Bag</span>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900">
+              <span class="lang-en">Krishidhan PROM</span>
+              <span class="lang-hi">कृषिधन प्रोम (PROM)</span>
+            </h3>
+            <p class="text-xs font-bold text-brand-700 mt-1">Phosphate Rich Organic Manure</p>
+            <p class="text-sm text-slate-600 mt-3 h-16">
+              <span class="lang-en">High-quality phosphorus with organic carbon. Makes roots strong and saves cost on chemical fertilizers.</span>
+              <span class="lang-hi">जैविक कार्बन के साथ उच्च गुणवत्ता वाला फास्फोरस। जड़ों को मजबूत बनाता है और रासायनिक खाद का खर्च बचाता है।</span>
+            </p>
+          </div>
+          <a href="https://wa.me/918889659090?text=I%20want%20price%20for%20Krishidhan%20PROM" target="_blank" class="block w-full bg-slate-800 hover:bg-slate-700 text-white text-center text-sm font-bold py-2.5 rounded-lg mt-4 transition">
+            <span class="lang-en">Get Dealer Price</span><span class="lang-hi">डीलर रेट जानें</span>
+          </a>
+        </div>
+
+        <!-- Super Power -->
+        <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow hover:shadow-lg transition flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-center mb-3">
+              <span class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-1 rounded">Krishidhan</span>
+              <span class="bg-slate-100 text-slate-600 text-[10px] font-bold px-2 py-1 rounded">50 kg Bag</span>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900">
+              <span class="lang-en">Super Power Manure</span>
+              <span class="lang-hi">सुपर पावर जैविक खाद</span>
+            </h3>
+            <p class="text-xs font-bold text-brand-700 mt-1">14% Organic Carbon</p>
+            <p class="text-sm text-slate-600 mt-3 h-16">
+              <span class="lang-en">Perfect food for your soil. Increases soil life and helps crops grow faster and healthier.</span>
+              <span class="lang-hi">आपकी मिट्टी के लिए सही भोजन। मिट्टी की जान बढ़ाता है और फसलों को तेजी से और स्वस्थ बढ़ने में मदद करता है।</span>
+            </p>
+          </div>
+          <a href="https://wa.me/918889659090?text=I%20want%20price%20for%20Super%20Power" target="_blank" class="block w-full bg-slate-800 hover:bg-slate-700 text-white text-center text-sm font-bold py-2.5 rounded-lg mt-4 transition">
+            <span class="lang-en">Get Dealer Price</span><span class="lang-hi">डीलर रेट जानें</span>
+          </a>
+        </div>
+
+        <!-- NPK 13:40:13 -->
+        <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow hover:shadow-lg transition flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-center mb-3">
+              <span class="bg-blue-100 text-blue-800 text-[10px] font-bold px-2 py-1 rounded">Saroj (Imported)</span>
+              <span class="bg-slate-100 text-slate-600 text-[10px] font-bold px-2 py-1 rounded">1 kg Pouch</span>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900">
+              <span class="lang-en">Saroj NPK 13:40:13</span>
+              <span class="lang-hi">सरोज NPK 13:40:13</span>
+            </h3>
+            <p class="text-xs font-bold text-blue-700 mt-1">100% Water Soluble</p>
+            <p class="text-sm text-slate-600 mt-3 h-16">
+              <span class="lang-en">Imported from Dubai. Best for spray or drip. Gives plants a quick boost during growth and flowering.</span>
+              <span class="lang-hi">दुबई से आयातित। स्प्रे या ड्रिप (Drip) के लिए सबसे अच्छा। पौधों के विकास और फूल आने के समय तुरंत ताकत देता है।</span>
+            </p>
+          </div>
+          <a href="https://wa.me/918889659090?text=I%20want%20price%20for%20NPK%2013:40:13" target="_blank" class="block w-full bg-slate-800 hover:bg-slate-700 text-white text-center text-sm font-bold py-2.5 rounded-lg mt-4 transition">
+            <span class="lang-en">Get Dealer Price</span><span class="lang-hi">डीलर रेट जानें</span>
+          </a>
+        </div>
+
+        <!-- Zinconix -->
+        <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow hover:shadow-lg transition flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-center mb-3">
+              <span class="bg-purple-100 text-purple-800 text-[10px] font-bold px-2 py-1 rounded">Saroj (Imported)</span>
+              <span class="bg-slate-100 text-slate-600 text-[10px] font-bold px-2 py-1 rounded">1 kg Pouch</span>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900">
+              <span class="lang-en">Saroj Zinconix</span>
+              <span class="lang-hi">सरोज जिंकोनिक्स (जिंक)</span>
+            </h3>
+            <p class="text-xs font-bold text-purple-700 mt-1">Zinc 33% & Zinc EDTA 12%</p>
+            <p class="text-sm text-slate-600 mt-3 h-16">
+              <span class="lang-en">Cures yellowing of leaves. Extremely pure imported Zinc for maximum grain size in wheat and paddy.</span>
+              <span class="lang-hi">पत्तों का पीलापन दूर करता है। गेहूं और धान में दानों के आकार को बढ़ाने के लिए एकदम शुद्ध आयातित जिंक।</span>
+            </p>
+          </div>
+          <a href="https://wa.me/918889659090?text=I%20want%20price%20for%20Zinconix" target="_blank" class="block w-full bg-slate-800 hover:bg-slate-700 text-white text-center text-sm font-bold py-2.5 rounded-lg mt-4 transition">
+            <span class="lang-en">Get Dealer Price</span><span class="lang-hi">डीलर रेट जानें</span>
+          </a>
+        </div>
+        
+        <!-- Boronix -->
+        <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow hover:shadow-lg transition flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-center mb-3">
+              <span class="bg-purple-100 text-purple-800 text-[10px] font-bold px-2 py-1 rounded">Saroj (Imported)</span>
+              <span class="bg-slate-100 text-slate-600 text-[10px] font-bold px-2 py-1 rounded">1 kg Pouch</span>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900">
+              <span class="lang-en">Saroj Boronix</span>
+              <span class="lang-hi">सरोज बोरोनिक्स (बोरान)</span>
+            </h3>
+            <p class="text-xs font-bold text-purple-700 mt-1">Boron 20%</p>
+            <p class="text-sm text-slate-600 mt-3 h-16">
+              <span class="lang-en">Prevents fruit drop and cracking. A must-have for cotton, vegetables, and fruit orchards.</span>
+              <span class="lang-hi">फलों को झड़ने और फटने से रोकता है। कपास, सब्जियों और फलों के बागों के लिए बहुत जरूरी।</span>
+            </p>
+          </div>
+          <a href="https://wa.me/918889659090?text=I%20want%20price%20for%20Boronix" target="_blank" class="block w-full bg-slate-800 hover:bg-slate-700 text-white text-center text-sm font-bold py-2.5 rounded-lg mt-4 transition">
+            <span class="lang-en">Get Dealer Price</span><span class="lang-hi">डीलर रेट जानें</span>
+          </a>
+        </div>
+
+        <!-- SulfaNix -->
+        <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow hover:shadow-lg transition flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-center mb-3">
+              <span class="bg-purple-100 text-purple-800 text-[10px] font-bold px-2 py-1 rounded">Saroj (Imported)</span>
+              <span class="bg-slate-100 text-slate-600 text-[10px] font-bold px-2 py-1 rounded">1 kg Pouch</span>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900">
+              <span class="lang-en">Saroj SulfaNix</span>
+              <span class="lang-hi">सरोज सल्फानिक्स (सल्फर)</span>
+            </h3>
+            <p class="text-xs font-bold text-purple-700 mt-1">Bentonite Sulphur 90%</p>
+            <p class="text-sm text-slate-600 mt-3 h-16">
+              <span class="lang-en">Increases oil content in mustard and soybean. Keeps soil healthy for a long time.</span>
+              <span class="lang-hi">सरसों और सोयाबीन में तेल की मात्रा बढ़ाता है। मिट्टी को लंबे समय तक स्वस्थ रखता है।</span>
+            </p>
+          </div>
+          <a href="https://wa.me/918889659090?text=I%20want%20price%20for%20SulfaNix" target="_blank" class="block w-full bg-slate-800 hover:bg-slate-700 text-white text-center text-sm font-bold py-2.5 rounded-lg mt-4 transition">
+            <span class="lang-en">Get Dealer Price</span><span class="lang-hi">डीलर रेट जानें</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CALCULATOR SECTION -->
+  <section id="calculator" class="py-12 bg-white border-b border-slate-200">
+    <div class="max-w-3xl mx-auto px-4">
+      <div class="bg-brand-50 border border-brand-200 rounded-2xl p-6 sm:p-8">
+        <h2 class="text-xl sm:text-2xl font-extrabold text-brand-900 mb-2">
+          <span class="lang-en">Calculate Order Weight</span>
+          <span class="lang-hi">ऑर्डर का वजन निकालें (कैलकुलेटर)</span>
+        </h2>
+        <p class="text-sm text-slate-600 mb-6">
+          <span class="lang-en">Select product and quantity to see truck loading weight.</span>
+          <span class="lang-hi">गाड़ी लोड करने के लिए उत्पाद और मात्रा चुनें और कुल वजन देखें।</span>
+        </p>
+
+        <div class="space-y-4">
+          <div>
+            <label class="block text-sm font-bold text-slate-800 mb-1">
+              <span class="lang-en">Select Product:</span><span class="lang-hi">उत्पाद चुनें:</span>
+            </label>
+            <select id="calcProduct" class="w-full bg-white border border-slate-300 p-3 rounded-lg text-sm" onchange="calcWeight()">
+              <option value="50">Krishidhan PROM / Manure (50 Kg Bag)</option>
+              <option value="25">Saroj NPK Box (25 Kg)</option>
+              <option value="20">Saroj Zinc Box (20 Kg)</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-bold text-slate-800 mb-1">
+              <span class="lang-en">Number of Bags / Boxes:</span><span class="lang-hi">बैग / बॉक्स की संख्या (क्वांटिटी):</span>
+            </label>
+            <input type="number" id="calcQty" value="100" class="w-full bg-white border border-slate-300 p-3 rounded-lg text-sm" oninput="calcWeight()">
+          </div>
+
+          <div class="bg-white p-4 rounded-lg border border-slate-200 text-center mt-4 shadow-sm">
+            <div class="text-sm text-slate-500 font-bold">
+              <span class="lang-en">Total Weight:</span><span class="lang-hi">कुल वजन (Total Weight):</span>
+            </div>
+            <div class="text-2xl font-black text-brand-700" id="calcResult">5000 Kg (5 Tons)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEALERSHIP FORM -->
+  <section id="dealer-form" class="py-12 bg-slate-900 text-white">
+    <div class="max-w-xl mx-auto px-4">
+      <div class="text-center mb-8">
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-accent-400">
+          <span class="lang-en">Apply For Dealership</span>
+          <span class="lang-hi">डीलरशिप के लिए फॉर्म भरें</span>
+        </h2>
+        <p class="text-sm text-slate-300 mt-2">
+          <span class="lang-en">Join our network and sell the best quality fertilizers.</span>
+          <span class="lang-hi">हमारे नेटवर्क से जुड़ें और सबसे अच्छी क्वालिटी की खाद बेचें।</span>
+        </p>
+      </div>
+
+      <form onsubmit="submitForm(event)" class="bg-slate-800 p-6 rounded-2xl shadow-xl space-y-4 border border-slate-700">
+        <div>
+          <input type="text" required placeholder="Your Name / आपका नाम *" class="w-full bg-slate-700 border border-slate-600 rounded-lg p-3 text-sm text-white focus:border-accent-400 focus:outline-none">
+        </div>
+        <div>
+          <input type="text" required placeholder="Shop Name / दुकान का नाम *" class="w-full bg-slate-700 border border-slate-600 rounded-lg p-3 text-sm text-white focus:border-accent-400 focus:outline-none">
+        </div>
+        <div>
+          <input type="tel" required placeholder="Mobile No. / मोबाइल नंबर *" class="w-full bg-slate-700 border border-slate-600 rounded-lg p-3 text-sm text-white focus:border-accent-400 focus:outline-none">
+        </div>
+        <div>
+          <input type="text" required placeholder="City & State / शहर और राज्य *" class="w-full bg-slate-700 border border-slate-600 rounded-lg p-3 text-sm text-white focus:border-accent-400 focus:outline-none">
+        </div>
+        
+        <button type="submit" class="w-full bg-accent-500 hover:bg-accent-600 text-brand-900 font-extrabold py-3.5 rounded-lg transition mt-4">
+          <span class="lang-en">Submit Details</span><span class="lang-hi">जानकारी सबमिट करें</span>
+        </button>
+
+        <p id="formMsg" class="hidden text-emerald-400 text-center font-bold text-sm mt-3">
+          <i class="fa-solid fa-check-circle"></i> 
+          <span class="lang-en">Thank you! We will call you soon.</span>
+          <span class="lang-hi">धन्यवाद! हम आपको जल्द ही कॉल करेंगे।</span>
+        </p>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-black text-slate-400 py-10 text-center sm:text-left">
+    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 gap-8 text-sm">
+      
+      <div>
+        <h3 class="text-white font-bold text-lg mb-2">AGROLIANCE</h3>
+        <p>Phosphate India Pvt. Ltd. & Swastik Bharat Agro</p>
+        <p class="mt-2 text-xs">CIN: U20121MP2023PTC068055</p>
+      </div>
+
+      <div class="sm:text-right">
+        <p class="text-accent-400 font-bold mb-1">Factory Location / फैक्ट्री:</p>
+        <p>Nimrani, Dist. Khargone (M.P.) - 451660</p>
+        <p class="mt-4 text-accent-400 font-bold mb-1">Help Line / हेल्पलाइन:</p>
+        <p class="text-white font-bold">+91 88896 59090</p>
+      </div>
+      
+    </div>
+  </footer>
+
+  <!-- STICKY WHATSAPP (Mobile friendly) -->
+  <a href="https://wa.me/918889659090" target="_blank" class="fixed bottom-4 right-4 z-50 bg-emerald-500 text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-2xl hover:scale-105 transition">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <!-- SCRIPTS -->
   <script>
-    const translations = {
-      en: {
-        toggleBtn: "हिंदी",
-        heroTitle: "Eco-Friendly Natural Water Bottles",
-        heroDesc: "100% natural, durable, and good for the planet. Made from eco-friendly materials to help replace single-use plastic.",
-        heroBtn: "Buy Now"
-      },
-      hi: {
-        toggleBtn: "English",
-        heroTitle: "पर्यावरण-अनुकूल प्राकृतिक पानी की बोतलें",
-        heroDesc: "100% प्राकृतिक, मजबूत और पर्यावरण के लिए सुरक्षित। प्लास्टिक कचरे को कम करने के लिए प्राकृतिक सामग्री से बनी।",
-        heroBtn: "अभी खरीदें"
-      }
-    };
-
-    let currentLang = 'en';
-
+    // Dual Language Toggle Function
     function toggleLanguage() {
-      currentLang = currentLang === 'en' ? 'hi' : 'en';
-      const langData = translations[currentLang];
-
-      document.getElementById('langToggle').innerText = langData.toggleBtn;
-      document.getElementById('heroTitle').innerText = langData.heroTitle;
-      document.getElementById('heroDesc').innerText = langData.heroDesc;
-      document.getElementById('heroBtn').innerText = langData.heroBtn;
-
-      document.querySelectorAll('.nav-links a').forEach(link => {
-        link.innerText = link.getAttribute(`data-${currentLang}`);
-      });
+      const body = document.body;
+      if (body.classList.contains('lang-en')) {
+        body.classList.remove('lang-en');
+        body.classList.add('lang-hi');
+      } else {
+        body.classList.remove('lang-hi');
+        body.classList.add('lang-en');
+      }
     }
 
-    function toggleMenu() {
-      document.getElementById('navLinks').classList.toggle('active');
+    // Mobile Menu Toggle
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('hidden');
+    }
+
+    // Weight Calculator
+    function calcWeight() {
+      const weightPerUnit = parseInt(document.getElementById('calcProduct').value);
+      const qty = parseInt(document.getElementById('calcQty').value) || 0;
+      const totalKg = weightPerUnit * qty;
+      const totalTons = totalKg / 1000;
+      
+      const isHi = document.body.classList.contains('lang-hi');
+      const text = isHi ? `${totalKg} किलो (${totalTons} टन)` : `${totalKg} Kg (${totalTons} Tons)`;
+      
+      document.getElementById('calcResult').innerText = text;
+    }
+
+    // Fake Form Submit
+    function submitForm(e) {
+      e.preventDefault();
+      document.getElementById('formMsg').classList.remove('hidden');
+      setTimeout(() => {
+        document.getElementById('formMsg').classList.add('hidden');
+        e.target.reset();
+      }, 4000);
     }
   </script>
+
 </body>
 </html>
