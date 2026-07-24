@@ -1,810 +1,280 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Agroliance Phosphate India Pvt. Ltd. | Premier B2B Agro Inputs</title>
-  
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- FontAwesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            brand: {
-              50: '#f0fdf4',
-              100: '#dcfce7',
-              600: '#16a34a',
-              700: '#15803d',
-              800: '#166534',
-              900: '#14532d',
-              dark: '#072714'
-            },
-            accent: {
-              400: '#facc15',
-              500: '#eab308',
-              600: '#ca8a04',
-              700: '#a16207'
-            }
-          },
-          fontFamily: {
-            sans: ['"Plus Jakarta Sans"', 'sans-serif']
-          }
-        }
-      }
-    }
-  </script>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eco Bottles - Dual Language Demo</title>
   <style>
-    .glass-effect {
-      background: rgba(255, 255, 255, 0.07);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
+    /* 1. Global Reset & Typography */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
-    .bg-grid-pattern {
-      background-image: radial-gradient(#15803d 0.75px, transparent 0.75px), radial-gradient(#15803d 0.75px, #f0fdf4 0.75px);
-      background-size: 30px 30px;
-      background-position: 0 0, 15px 15px;
-      opacity: 0.12;
+
+    body {
+      background-color: #f9fbf9;
+      color: #2d3748;
+      line-height: 1.6;
+    }
+
+    /* 2. Navigation Header */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #ffffff;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #2e7d32;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #4a5568;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #2e7d32;
+    }
+
+    /* Language Switcher Button */
+    .lang-btn {
+      background-color: #e8f5e9;
+      color: #1b5e20;
+      border: 1px solid #a5d6a7;
+      padding: 0.4rem 0.8rem;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+
+    .lang-btn:hover {
+      background-color: #c8e6c9;
+    }
+
+    /* Mobile Hamburger Icon */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      cursor: pointer;
+    }
+
+    .hamburger span {
+      width: 24px;
+      height: 3px;
+      background-color: #2d3748;
+      border-radius: 2px;
+    }
+
+    /* 3. Main Hero Layout */
+    .container {
+      max-width: 1100px;
+      margin: 3rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 2.5rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .hero-content {
+      flex: 1;
+    }
+
+    .hero-content h1 {
+      font-size: 2.2rem;
+      color: #1a365d;
+      margin-bottom: 1rem;
+    }
+
+    .hero-content p {
+      font-size: 1.1rem;
+      color: #4a5568;
+      margin-bottom: 1.5rem;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background-color: #2e7d32;
+      color: #ffffff;
+      padding: 0.8rem 1.8rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+
+    .btn-primary:hover {
+      background-color: #1b5e20;
+    }
+
+    .hero-image {
+      flex: 1;
+      text-align: center;
+    }
+
+    .hero-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    /* 4. Responsive Mobile Media Queries */
+    @media (max-width: 768px) {
+      .hamburger {
+        display: flex;
+      }
+
+      .nav-links {
+        display: none; /* Hidden on mobile by default */
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #ffffff;
+        padding: 1rem 2rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .nav-links.active {
+        display: flex; /* Show when toggled */
+      }
+
+      .hero {
+        flex-direction: column-reverse; /* Stack image above or below text */
+        text-align: center;
+        padding: 1.5rem;
+      }
+
+      .hero-content h1 {
+        font-size: 1.7rem;
+      }
+
+      .hero-content p {
+        font-size: 1rem;
+      }
+
+      .btn-primary {
+        width: 100%; /* Full width button on mobile */
+        text-align: center;
+      }
     }
   </style>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-brand-600 selection:text-white">
+<body>
 
-  <!-- TOP ANNOUNCEMENT BAR -->
-  <div class="bg-brand-dark text-accent-400 text-xs py-2 px-4 border-b border-brand-800">
-    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 text-center sm:text-left">
-      <div class="flex items-center gap-2">
-        <span class="bg-accent-500 text-brand-900 font-black text-[10px] px-2 py-0.5 rounded uppercase tracking-wider">National Honor</span>
-        <span class="text-white font-medium">CMD Mr. Krishnapal Singh Tomar conferred with <strong>"Bharat Samman 2026"</strong></span>
-      </div>
-      <div class="flex items-center gap-4 text-slate-300 text-xs">
-        <a href="tel:+918889659090" class="hover:text-amber-300 transition flex items-center gap-1">
-          <i class="fa-solid fa-phone text-accent-400"></i> +91 88896 59090
-        </a>
-        <span>|</span>
-        <a href="mailto:info@agroliance.in" class="hover:text-amber-300 transition flex items-center gap-1">
-          <i class="fa-solid fa-envelope text-accent-400"></i> info@agroliance.in
-        </a>
-      </div>
-    </div>
-  </div>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="logo">EcoBottles</div>
 
-  <!-- NAVIGATION HEADER -->
-  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center h-20">
-        
-        <!-- LOGO BRANDING -->
-        <a href="#" class="flex items-center gap-3">
-          <div class="w-12 h-12 bg-gradient-to-br from-brand-700 to-brand-900 rounded-xl flex items-center justify-center text-accent-400 shadow-md">
-            <i class="fa-solid fa-seedling text-2xl"></i>
-          </div>
-          <div>
-            <div class="text-lg font-black text-brand-900 leading-none tracking-tight">AGROLIANCE</div>
-            <div class="text-[10px] font-bold text-accent-600 tracking-widest uppercase mt-0.5">Phosphate India Pvt. Ltd.</div>
-            <div class="text-[9px] text-slate-500 font-medium">& Swastik Bharat Agro Industries</div>
-          </div>
-        </a>
-
-        <!-- DESKTOP NAV -->
-        <nav class="hidden md:flex items-center space-x-6 text-sm font-semibold text-slate-700">
-          <a href="#about" class="hover:text-brand-700 transition">Company</a>
-          <a href="#products" class="hover:text-brand-700 transition">Products</a>
-          <a href="#quality" class="hover:text-brand-700 transition">FCO & Lab CoA</a>
-          <a href="#estimator" class="hover:text-brand-700 transition">Bulk Estimator</a>
-          <a href="#leadership" class="hover:text-brand-700 transition">Leadership</a>
-        </nav>
-
-        <!-- CTA -->
-        <div class="hidden sm:flex items-center gap-3">
-          <a href="#dealer-form" class="bg-brand-800 hover:bg-brand-900 text-white px-5 py-2.5 rounded-xl text-sm font-bold shadow-md hover:shadow-lg transition flex items-center gap-2">
-            <i class="fa-solid fa-handshake text-accent-400"></i> Become a Dealer
-          </a>
-        </div>
-
-        <!-- MOBILE MENU BUTTON -->
-        <button onclick="toggleMobileNav()" class="md:hidden text-slate-700 hover:text-brand-700 p-2 text-2xl focus:outline-none">
-          <i class="fa-solid fa-bars" id="mobileNavIcon"></i>
-        </button>
-      </div>
-    </div>
-
-    <!-- MOBILE DROPDOWN -->
-    <div id="mobileNav" class="hidden md:hidden bg-white border-b border-slate-200 px-4 py-4 space-y-3 shadow-lg">
-      <a href="#about" onclick="toggleMobileNav()" class="block text-slate-800 font-semibold hover:text-brand-700">Company Profile</a>
-      <a href="#products" onclick="toggleMobileNav()" class="block text-slate-800 font-semibold hover:text-brand-700">Products (Krishidhan & Saroj)</a>
-      <a href="#quality" onclick="toggleMobileNav()" class="block text-slate-800 font-semibold hover:text-brand-700">FCO Standards & Imports</a>
-      <a href="#estimator" onclick="toggleMobileNav()" class="block text-slate-800 font-semibold hover:text-brand-700">Bulk Margin Estimator</a>
-      <a href="#leadership" onclick="toggleMobileNav()" class="block text-slate-800 font-semibold hover:text-brand-700">CMD Award & Leadership</a>
-      <a href="#dealer-form" onclick="toggleMobileNav()" class="block text-center bg-brand-800 text-white py-3 rounded-xl font-bold">Apply for Dealership</a>
-    </div>
-  </header>
-
-  <!-- HERO SECTION -->
-  <section class="relative bg-gradient-to-b from-brand-dark via-brand-900 to-brand-800 text-white overflow-hidden py-16 lg:py-24">
-    <div class="absolute inset-0 bg-grid-pattern"></div>
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-        
-        <!-- Left Hero Column -->
-        <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-          
-          <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-1.5 rounded-full text-xs font-semibold text-accent-400">
-            <i class="fa-solid fa-award text-accent-400"></i>
-            <span>Bharat Samman 2026 Conferred Leadership</span>
-          </div>
-
-          <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-tight">
-            Nurturing Soil.<br>
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent-400 via-amber-300 to-amber-200">Empowering Dealers.</span><br>
-            Maximizing Crop Yields.
-          </h1>
-
-          <p class="text-slate-200 text-sm sm:text-base max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
-            Manufacturer & Importer of FCO-certified organic manures (<strong>Krishidhan Series</strong>) and 100% water soluble specialty fertilizers (<strong>Saroj Series with FSR Tech</strong>). Direct dispatches from Nimrani Plant (M.P.).
-          </p>
-
-          <!-- Key Credentials Grid -->
-          <div class="pt-2 grid grid-cols-2 sm:grid-cols-3 gap-3 max-w-xl mx-auto lg:mx-0 text-left">
-            <div class="glass-effect p-3 rounded-xl flex items-center gap-3">
-              <i class="fa-solid fa-industry text-accent-400 text-xl"></i>
-              <div>
-                <div class="text-[10px] text-slate-300">Plant Location</div>
-                <div class="text-xs font-bold text-white">Nimrani (M.P.)</div>
-              </div>
-            </div>
-            <div class="glass-effect p-3 rounded-xl flex items-center gap-3">
-              <i class="fa-solid fa-ship text-accent-400 text-xl"></i>
-              <div>
-                <div class="text-[10px] text-slate-300">Global Supply</div>
-                <div class="text-xs font-bold text-white">RNZ Dubai (UAE)</div>
-              </div>
-            </div>
-            <div class="glass-effect p-3 rounded-xl flex items-center gap-3 col-span-2 sm:col-span-1">
-              <i class="fa-solid fa-shield-halved text-accent-400 text-xl"></i>
-              <div>
-                <div class="text-[10px] text-slate-300">Quality Standard</div>
-                <div class="text-xs font-bold text-white">100% FCO Compliant</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Hero CTAs -->
-          <div class="pt-4 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-            <a href="#dealer-form" class="w-full sm:w-auto bg-gradient-to-r from-accent-500 to-accent-600 hover:from-accent-600 hover:to-accent-700 text-brand-900 font-extrabold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition text-center flex items-center justify-center gap-2">
-              <i class="fa-solid fa-store"></i> Apply For Dealership
-            </a>
-            <a href="#products" class="w-full sm:w-auto bg-white/10 hover:bg-white/20 text-white font-bold px-6 py-4 rounded-xl border border-white/20 transition text-center flex items-center justify-center gap-2">
-              <i class="fa-solid fa-boxes-stacked"></i> View Product Catalog
-            </a>
-          </div>
-
-        </div>
-
-        <!-- Right B2B Value Visual -->
-        <div class="lg:col-span-5">
-          <div class="glass-effect rounded-3xl p-6 sm:p-8 shadow-2xl relative">
-            <div class="absolute -top-3 -right-3 bg-accent-400 text-brand-900 font-black text-[10px] px-3 py-1 rounded-full shadow-lg uppercase tracking-wider">
-              B2B Direct Dispatches
-            </div>
-
-            <div class="text-center space-y-4">
-              <div class="w-16 h-16 bg-accent-400/20 text-accent-400 rounded-2xl flex items-center justify-center mx-auto border border-accent-400/40">
-                <i class="fa-solid fa-truck-ramp-box text-3xl"></i>
-              </div>
-              <h3 class="text-xl font-bold text-white">Tier-2 & Tier-3 Dealer Expansion</h3>
-              <p class="text-slate-300 text-xs leading-relaxed">
-                Protected regional territories, attractive trade stockist margins, direct factory dispatches, and 100% lab-backed analytical purity.
-              </p>
-              
-              <div class="bg-brand-dark/60 rounded-2xl p-4 text-left space-y-2 border border-white/10 text-xs">
-                <div class="flex justify-between text-slate-300 border-b border-white/10 pb-2">
-                  <span><i class="fa-solid fa-check text-emerald-400 mr-1.5"></i>Krishidhan Organic Line</span>
-                  <span class="font-bold text-white">50 Kg Bags</span>
-                </div>
-                <div class="flex justify-between text-slate-300 border-b border-white/10 pb-2">
-                  <span><i class="fa-solid fa-check text-emerald-400 mr-1.5"></i>Saroj Water Soluble NPK</span>
-                  <span class="font-bold text-white">1 Kg / Bulk</span>
-                </div>
-                <div class="flex justify-between text-slate-300">
-                  <span><i class="fa-solid fa-check text-emerald-400 mr-1.5"></i>Zinconix / Boronix</span>
-                  <span class="font-bold text-white">High Purity</span>
-                </div>
-              </div>
-
-              <a href="https://wa.me/918889659090?text=Hello%20Agroliance%20Team,%20I%20am%20interested%20in%20taking%20a%20dealership." target="_blank" class="block w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3.5 rounded-xl shadow transition text-xs text-center">
-                <i class="fa-brands fa-whatsapp text-base mr-1.5"></i> WhatsApp Inquiry
-              </a>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- LEADERSHIP & CMD AWARD SECTION -->
-  <section id="leadership" class="py-16 bg-slate-100">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="nav-right">
+      <button class="lang-btn" id="langToggle" onclick="toggleLanguage()">हिंदी</button>
       
-      <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-200 grid grid-cols-1 lg:grid-cols-12">
-        
-        <!-- Award Visual Box -->
-        <div class="lg:col-span-5 bg-gradient-to-br from-brand-900 to-brand-800 p-8 text-white flex flex-col justify-between relative">
-          <div>
-            <span class="bg-accent-400 text-brand-900 font-black text-[10px] px-3 py-1 rounded-full uppercase tracking-wider mb-4 inline-block">
-              Leadership Spotlight
-            </span>
-            <h3 class="text-2xl font-extrabold text-white leading-snug">
-              Visionary Leadership Driving Sustainable Indian Agriculture
-            </h3>
-            <p class="text-slate-300 text-xs mt-3 leading-relaxed">
-              Under the dynamic leadership of our CMD, Agroliance Phosphate India & Swastik Bharat Agro are championing soil vitality, high-yield plant nutrition, and farmer prosperity across India.
-            </p>
-          </div>
-
-          <div class="mt-8 bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/15 space-y-1">
-            <div class="text-accent-400 font-bold text-xs uppercase">National Honor Conferred</div>
-            <div class="text-white font-black text-lg">"BHARAT SAMMAN 2026"</div>
-            <div class="text-slate-300 text-[11px]">Conferred by Global Excellence Forum (GEF) | Regd. by Govt. of India (NITI Aayog & MSME accredited)</div>
-          </div>
-        </div>
-
-        <!-- CMD Bio & Core Philosophy -->
-        <div class="lg:col-span-7 p-8 sm:p-12 flex flex-col justify-center space-y-5">
-          <div>
-            <div class="text-xs font-bold text-brand-700 uppercase tracking-widest">Chairman & Managing Director</div>
-            <h2 class="text-3xl font-black text-slate-900 mt-1">Mr. Krishnapal Singh Tomar</h2>
-            <div class="text-slate-500 font-medium text-xs mt-0.5">CMD – Agroliance Phosphate India Pvt. Ltd. & Swastik Bharat Agro Industries Pvt. Ltd.</div>
-          </div>
-
-          <!-- Quote -->
-          <div class="bg-brand-50 border-l-4 border-brand-700 p-4 rounded-r-xl">
-            <p class="text-brand-900 font-serif italic text-base">
-              "Healthy Soil, Healthy Crop, Healthy Nation"
-            </p>
-            <div class="text-[11px] font-bold text-brand-700 mt-1">— Guiding Philosophy for Indian Agriculture</div>
-          </div>
-
-          <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
-            Recognized as an agriculture entrepreneur dedicated to empowering farmers and strengthening India's agricultural ecosystem. His vision combines domestic organic soil enrichment with high-technology imported water-soluble inputs to deliver reliable crop productivity to ground-level farmers.
-          </p>
-
-          <div class="grid grid-cols-2 gap-3 text-xs font-semibold text-slate-700 pt-1">
-            <div class="flex items-center gap-2">
-              <i class="fa-solid fa-circle-check text-brand-700"></i> Soil Health Revitalization
-            </div>
-            <div class="flex items-center gap-2">
-              <i class="fa-solid fa-circle-check text-brand-700"></i> FCO & Lab Batch Compliance
-            </div>
-            <div class="flex items-center gap-2">
-              <i class="fa-solid fa-circle-check text-brand-700"></i> Agri-Industrial Growth
-            </div>
-            <div class="flex items-center gap-2">
-              <i class="fa-solid fa-circle-check text-brand-700"></i> Dealer Network Support
-            </div>
-          </div>
-        </div>
-
+      <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
 
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#" data-en="Home" data-hi="होम">Home</a></li>
+        <li><a href="#" data-en="Products" data-hi="उत्पाद">Products</a></li>
+        <li><a href="#" data-en="About Us" data-hi="हमारे बारे में">About Us</a></li>
+        <li><a href="#" data-en="Contact" data-hi="संपर्क करें">Contact</a></li>
+      </ul>
     </div>
-  </section>
+  </nav>
 
-  <!-- PRODUCT CATALOG SECTION -->
-  <section id="products" class="py-16 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <!-- Section Header -->
-      <div class="text-center max-w-3xl mx-auto space-y-2">
-        <span class="bg-brand-100 text-brand-800 text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-wider">Product Catalog</span>
-        <h2 class="text-3xl font-extrabold text-slate-900">Technical Product Portfolio</h2>
-        <p class="text-slate-600 text-xs sm:text-sm">
-          Certified organic manures, phosphate-rich organic fertilizers (PROM), and 100% water-soluble specialty inputs with FSR Technology.
+  <!-- Hero Content -->
+  <main class="container">
+    <section class="hero">
+      <div class="hero-content">
+        <h1 id="heroTitle">Eco-Friendly Natural Water Bottles</h1>
+        <p id="heroDesc">
+          100% natural, durable, and good for the planet. Made from eco-friendly materials to help replace single-use plastic.
         </p>
+        <a href="#" class="btn-primary" id="heroBtn">Buy Now</a>
       </div>
-
-      <!-- Category Filter Tabs & Search -->
-      <div class="mt-10 flex flex-col md:flex-row justify-between items-center gap-4 border-b border-slate-200 pb-6">
-        
-        <div class="flex flex-wrap justify-center gap-2" id="filterBtnGroup">
-          <button onclick="filterCategory('all')" class="cat-btn active bg-brand-800 text-white px-4 py-2 rounded-xl text-xs font-bold shadow transition">All Products</button>
-          <button onclick="filterCategory('krishidhan')" class="cat-btn bg-slate-100 text-slate-700 hover:bg-slate-200 px-4 py-2 rounded-xl text-xs font-bold transition">Krishidhan Organic (50kg)</button>
-          <button onclick="filterCategory('npk')" class="cat-btn bg-slate-100 text-slate-700 hover:bg-slate-200 px-4 py-2 rounded-xl text-xs font-bold transition">Saroj Water-Soluble NPK</button>
-          <button onclick="filterCategory('micronutrient')" class="cat-btn bg-slate-100 text-slate-700 hover:bg-slate-200 px-4 py-2 rounded-xl text-xs font-bold transition">Micronutrients & Secondary</button>
-        </div>
-
-        <div class="w-full md:w-64 relative">
-          <input type="text" id="searchInput" oninput="liveSearch()" placeholder="Search formulation..." class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-brand-600">
-          <i class="fa-solid fa-magnifying-glass absolute right-3 top-2.5 text-slate-400 text-xs"></i>
-        </div>
-
+      <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=500&q=80" alt="Eco Bottle" />
       </div>
+    </section>
+  </main>
 
-      <!-- Product Cards Grid -->
-      <div class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="productGrid">
-        
-        <!-- Card 1: PROM -->
-        <div class="p-card bg-slate-50 border border-slate-200 rounded-2xl p-6 hover:shadow-xl transition flex flex-col justify-between" data-category="krishidhan" data-search="prom phosphate rich organic manure krishidhan">
-          <div>
-            <div class="flex justify-between items-start gap-2 mb-3">
-              <span class="bg-emerald-100 text-emerald-800 font-extrabold text-[10px] px-2.5 py-1 rounded uppercase">Organic / FCO</span>
-              <span class="bg-amber-100 text-amber-800 font-bold text-[10px] px-2.5 py-1 rounded">50 kg Bag</span>
-            </div>
-            <h3 class="text-xl font-bold text-slate-900">Krishidhan PROM</h3>
-            <div class="text-xs font-bold text-emerald-700 mt-0.5">Phosphate Rich Organic Manure (P<sub>2</sub>O<sub>5</sub> 8.0%)</div>
-            <p class="text-slate-600 text-xs mt-3 line-clamp-2">
-              High bio-availability phosphorus enriched with organic carbon. Enhances root establishment and reduces chemical dependency.
-            </p>
-
-            <div class="mt-4 bg-white p-3 rounded-xl border border-slate-200 text-xs space-y-1">
-              <div class="flex justify-between"><span class="text-slate-500">Total P<sub>2</sub>O<sub>5</sub>:</span> <span class="font-bold text-slate-800">8.0% Min</span></div>
-              <div class="flex justify-between"><span class="text-slate-500">Organic Carbon:</span> <span class="font-bold text-slate-800">8.0% Min</span></div>
-              <div class="flex justify-between"><span class="text-slate-500">Moisture:</span> <span class="font-bold text-slate-800">25.0% Max</span></div>
-            </div>
-          </div>
-
-          <div class="mt-6 flex gap-2">
-            <button onclick="showSpec('Krishidhan PROM', 'Phosphate Rich Organic Manure', 'P2O5: 8.0% Min, Organic Carbon: 8.0% Min, C:N Ratio < 20:1, Moisture < 25%, pH: 6.5-8.0.', '50 kg BOPP Bags', 'Soyabean, Wheat, Cotton, Sugarcane, Vegetables, Paddy.')" class="flex-1 bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold py-2 rounded-lg text-xs transition">
-              Specs
-            </button>
-            <a href="https://wa.me/918889659090?text=Inquiry%20for%20Krishidhan%20PROM" target="_blank" class="bg-brand-700 hover:bg-brand-800 text-white font-bold px-3 py-2 rounded-lg text-xs transition flex items-center justify-center">
-              <i class="fa-brands fa-whatsapp text-sm"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- Card 2: Super Power -->
-        <div class="p-card bg-slate-50 border border-slate-200 rounded-2xl p-6 hover:shadow-xl transition flex flex-col justify-between" data-category="krishidhan" data-search="organic manure super power krishidhan">
-          <div>
-            <div class="flex justify-between items-start gap-2 mb-3">
-              <span class="bg-emerald-100 text-emerald-800 font-extrabold text-[10px] px-2.5 py-1 rounded uppercase">Organic / FCO</span>
-              <span class="bg-amber-100 text-amber-800 font-bold text-[10px] px-2.5 py-1 rounded">50 kg Bag</span>
-            </div>
-            <h3 class="text-xl font-bold text-slate-900">Krishidhan Super Power</h3>
-            <div class="text-xs font-bold text-emerald-700 mt-0.5">Organic Manure Powder (P<sub>2</sub>O<sub>5</sub> 0.5%)</div>
-            <p class="text-slate-600 text-xs mt-3 line-clamp-2">
-              Soil carbon builder enriched with essential organic nitrogen and micro-nutrients for microbial activity restoration.
-            </p>
-
-            <div class="mt-4 bg-white p-3 rounded-xl border border-slate-200 text-xs space-y-1">
-              <div class="flex justify-between"><span class="text-slate-500">Organic Carbon:</span> <span class="font-bold text-slate-800">14.0% Min</span></div>
-              <div class="flex justify-between"><span class="text-slate-500">Nitrogen (Total):</span> <span class="font-bold text-slate-800">0.5% Min</span></div>
-              <div class="flex justify-between"><span class="text-slate-500">C:N Ratio:</span> <span class="font-bold text-slate-800">&lt; 20:1</span></div>
-            </div>
-          </div>
-
-          <div class="mt-6 flex gap-2">
-            <button onclick="showSpec('Krishidhan Super Power', 'Organic Manure Powder', 'Organic Carbon: 14% Min, Nitrogen: 0.5%, P2O5: 0.5%, Moisture < 25%, C:N < 20:1.', '50 kg Bags', 'All soil types and crop varieties.')" class="flex-1 bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold py-2 rounded-lg text-xs transition">
-              Specs
-            </button>
-            <a href="https://wa.me/918889659090?text=Inquiry%20for%20Krishidhan%20Super%20Power" target="_blank" class="bg-brand-700 hover:bg-brand-800 text-white font-bold px-3 py-2 rounded-lg text-xs transition flex items-center justify-center">
-              <i class="fa-brands fa-whatsapp text-sm"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- Card 3: NPK 13:40:13 -->
-        <div class="p-card bg-slate-50 border border-slate-200 rounded-2xl p-6 hover:shadow-xl transition flex flex-col justify-between" data-category="npk" data-search="saroj npk 13 40 13 water soluble imported">
-          <div>
-            <div class="flex justify-between items-start gap-2 mb-3">
-              <span class="bg-blue-100 text-blue-800 font-extrabold text-[10px] px-2.5 py-1 rounded uppercase">Imported / FSR Tech</span>
-              <span class="bg-amber-100 text-amber-800 font-bold text-[10px] px-2.5 py-1 rounded">1 Kg / Bulk</span>
-            </div>
-            <h3 class="text-xl font-bold text-slate-900">Saroj NPK 13:40:13</h3>
-            <div class="text-xs font-bold text-blue-700 mt-0.5">100% Water Soluble Complex Fertilizer</div>
-            <p class="text-slate-600 text-xs mt-3 line-clamp-2">
-              Imported formulation with Fast Soluble Release (FSR) Technology. Ideal for vegetative growth and early bloom phase.
-            </p>
-
-            <div class="mt-4 bg-white p-3 rounded-xl border border-slate-200 text-xs space-y-1">
-              <div class="flex justify-between"><span class="text-slate-500">Nitrogen (Nitrate):</span> <span class="font-bold text-slate-800">13.0% Min</span></div>
-              <div class="flex justify-between"><span class="text-slate-500">Soluble P<sub>2</sub>O<sub>5</sub>:</span> <span class="font-bold text-slate-800">40.0% Min</span></div>
-              <div class="flex justify-between"><span class="text-slate-500">Soluble K<sub>2</sub>O:</span> <span class="font-bold text-slate-800">13.0% Min</span></div>
-            </div>
-          </div>
-
-          <div class="mt-6 flex gap-2">
-            <button onclick="showSpec('Saroj NPK 13:40:13', 'Water Soluble Fertilizer', 'Nitrogen: 13.0%, P2O5: 40.0%, K2O: 13.0%, Moisture < 0.31%, Chloride < 0.83%.', '1 kg Pouches & 25 kg Bags', 'Foliar spray & Drip Irrigation.')" class="flex-1 bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold py-2 rounded-lg text-xs transition">
-              Specs
-            </button>
-            <a href="https://wa.me/918889659090?text=Inquiry%20for%20Saroj%20NPK%2013:40:13" target="_blank" class="bg-brand-700 hover:bg-brand-800 text-white font-bold px-3 py-2 rounded-lg text-xs transition flex items-center justify-center">
-              <i class="fa-brands fa-whatsapp text-sm"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- Card 4: Zinconix -->
-        <div class="p-card bg-slate-50 border border-slate-200 rounded-2xl p-6 hover:shadow-xl transition flex flex-col justify-between" data-category="micronutrient" data-name="zinconix zinc sulphate mono hydrate chelated zinc edta 12 saroj">
-          <div>
-            <div class="flex justify-between items-start gap-2 mb-3">
-              <span class="bg-purple-100 text-purple-800 font-extrabold text-[10px] px-2.5 py-1 rounded uppercase">Micronutrient</span>
-              <span class="bg-amber-100 text-amber-800 font-bold text-[10px] px-2.5 py-1 rounded">1 kg Pouch</span>
-            </div>
-            <h3 class="text-xl font-bold text-slate-900">Saroj Zinconix</h3>
-            <div class="text-xs font-bold text-purple-700 mt-0.5">Zinc 33% & Chelated Zinc EDTA 12%</div>
-            <p class="text-slate-600 text-xs mt-3 line-clamp-2">
-              Prevents leaf chlorosis, encourages plant hormone synthesis, and maximizes grain filling.
-            </p>
-
-            <div class="mt-4 bg-white p-3 rounded-xl border border-slate-200 text-xs space-y-1">
-              <div class="flex justify-between"><span class="text-slate-500">Zinc Monohydrate:</span> <span class="font-bold text-slate-800">33.0% Zn</span></div>
-              <div class="flex justify-between"><span class="text-slate-500">Zinc EDTA:</span> <span class="font-bold text-slate-800">12.0% Zn</span></div>
-              <div class="flex justify-between"><span class="text-slate-500">Solubility:</span> <span class="font-bold text-slate-800">100% Instant</span></div>
-            </div>
-          </div>
-
-          <div class="mt-6 flex gap-2">
-            <button onclick="showSpec('Saroj Zinconix', 'Zinc Supplement', 'Zinc: 33% (Monohydrate) or 12% (EDTA), Moisture < 1.0%, Water insoluble < 0.1%.', '1 kg Premium Pouches', 'Paddy, Wheat, Maize, Citrus, Soyabean.')" class="flex-1 bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold py-2 rounded-lg text-xs transition">
-              Specs
-            </button>
-            <a href="https://wa.me/918889659090?text=Inquiry%20for%20Saroj%20Zinconix" target="_blank" class="bg-brand-700 hover:bg-brand-800 text-white font-bold px-3 py-2 rounded-lg text-xs transition flex items-center justify-center">
-              <i class="fa-brands fa-whatsapp text-sm"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- Card 5: Boronix -->
-        <div class="p-card bg-slate-50 border border-slate-200 rounded-2xl p-6 hover:shadow-xl transition flex flex-col justify-between" data-category="micronutrient" data-name="boronix boron 20 14.5 disodium tetra borate saroj">
-          <div>
-            <div class="flex justify-between items-start gap-2 mb-3">
-              <span class="bg-purple-100 text-purple-800 font-extrabold text-[10px] px-2.5 py-1 rounded uppercase">Micronutrient</span>
-              <span class="bg-amber-100 text-amber-800 font-bold text-[10px] px-2.5 py-1 rounded">1kg / 30kg</span>
-            </div>
-            <h3 class="text-xl font-bold text-slate-900">Saroj Boronix</h3>
-            <div class="text-xs font-bold text-purple-700 mt-0.5">Boron 20% (DOT) & Boron 14.5%</div>
-            <p class="text-slate-600 text-xs mt-3 line-clamp-2">
-              Di-Sodium Octa Borate Tetra Hydrate & Penta Hydrate. Essential for pollen germination and fruit setting.
-            </p>
-
-            <div class="mt-4 bg-white p-3 rounded-xl border border-slate-200 text-xs space-y-1">
-              <div class="flex justify-between"><span class="text-slate-500">Boron (DOT 20%):</span> <span class="font-bold text-slate-800">20.0% B Min</span></div>
-              <div class="flex justify-between"><span class="text-slate-500">Boron (Penta 14.5%):</span> <span class="font-bold text-slate-800">14.6% Tested</span></div>
-              <div class="flex justify-between"><span class="text-slate-500">Heavy Metal Pb:</span> <span class="font-bold text-slate-800">0.0012% Ultra Low</span></div>
-            </div>
-          </div>
-
-          <div class="mt-6 flex gap-2">
-            <button onclick="showSpec('Saroj Boronix', 'Boron Fertilizer', 'Boron: 20% (DOT) or 14.5% (Penta), Insoluble matter < 0.18%, Lead < 0.0012%.', '1 kg Pouches & 30 kg Kraft Bags', 'Cotton, Vegetables, Mustard, Fruits.')" class="flex-1 bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold py-2 rounded-lg text-xs transition">
-              Specs
-            </button>
-            <a href="https://wa.me/918889659090?text=Inquiry%20for%20Saroj%20Boronix" target="_blank" class="bg-brand-700 hover:bg-brand-800 text-white font-bold px-3 py-2 rounded-lg text-xs transition flex items-center justify-center">
-              <i class="fa-brands fa-whatsapp text-sm"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- Card 6: SulfaNix -->
-        <div class="p-card bg-slate-50 border border-slate-200 rounded-2xl p-6 hover:shadow-xl transition flex flex-col justify-between" data-category="micronutrient" data-name="sulfanix bentonite sulphur 90 fsr technology saroj">
-          <div>
-            <div class="flex justify-between items-start gap-2 mb-3">
-              <span class="bg-purple-100 text-purple-800 font-extrabold text-[10px] px-2.5 py-1 rounded uppercase">Secondary Nutrient</span>
-              <span class="bg-amber-100 text-amber-800 font-bold text-[10px] px-2.5 py-1 rounded">1 kg / 25 kg</span>
-            </div>
-            <h3 class="text-xl font-bold text-slate-900">Saroj SulfaNix</h3>
-            <div class="text-xs font-bold text-purple-700 mt-0.5">Bentonite Sulphur 90% (FSR Tech)</div>
-            <p class="text-slate-600 text-xs mt-3 line-clamp-2">
-              Controlled-release pastille formulation that boosts oil content in oilseed crops and adjusts alkaline soils.
-            </p>
-
-            <div class="mt-4 bg-white p-3 rounded-xl border border-slate-200 text-xs space-y-1">
-              <div class="flex justify-between"><span class="text-slate-500">Elemental Sulphur:</span> <span class="font-bold text-slate-800">90.0% Min</span></div>
-              <div class="flex justify-between"><span class="text-slate-500">Formulation:</span> <span class="font-bold text-slate-800">FSR Pastilles</span></div>
-              <div class="flex justify-between"><span class="text-slate-500">Dispersibility:</span> <span class="font-bold text-slate-800">High Soil Matrix</span></div>
-            </div>
-          </div>
-
-          <div class="mt-6 flex gap-2">
-            <button onclick="showSpec('Saroj SulfaNix', 'Bentonite Sulphur 90%', 'Elemental Sulphur: 90% with bentonite clay dispersion system.', '1 kg Pouches & 25 kg Bags', 'Mustard, Soyabean, Groundnut, Garlic, Onion.')" class="flex-1 bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold py-2 rounded-lg text-xs transition">
-              Specs
-            </button>
-            <a href="https://wa.me/918889659090?text=Inquiry%20for%20Saroj%20SulfaNix" target="_blank" class="bg-brand-700 hover:bg-brand-800 text-white font-bold px-3 py-2 rounded-lg text-xs transition flex items-center justify-center">
-              <i class="fa-brands fa-whatsapp text-sm"></i>
-            </a>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ESTIMATOR SECTION -->
-  <section id="estimator" class="py-16 bg-slate-100 border-t border-b border-slate-200">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
-      
-      <div class="text-center space-y-2">
-        <span class="bg-brand-100 text-brand-800 text-xs font-extrabold px-3 py-1 rounded-full uppercase">Stockist Dispatch Tool</span>
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Wholesale Order & Tonnage Estimator</h2>
-        <p class="text-slate-600 text-xs sm:text-sm">Calculate total freight dispatch weight for direct deliveries from our Nimrani Plant.</p>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-bold text-slate-700">
-        <div>
-          <label class="block mb-1.5 text-slate-800">Product Formulation:</label>
-          <select id="estProduct" onchange="calcWeight()" class="w-full bg-slate-50 border border-slate-300 rounded-xl p-3 text-xs focus:ring-2 focus:ring-brand-600 focus:outline-none">
-            <option value="Krishidhan PROM (50kg)|50">Krishidhan PROM (50 Kg Bag)</option>
-            <option value="Krishidhan Organic Manure (50kg)|50">Krishidhan Super Power (50 Kg Bag)</option>
-            <option value="Saroj NPK 13:40:13 (25kg Box)|25">Saroj NPK 13:40:13 (25 kg Box)</option>
-            <option value="Saroj Zinconix (20kg Box)|20">Saroj Zinconix (20 kg Box)</option>
-            <option value="Saroj Boronix 14.5% (30kg Kraft)|30">Saroj Boronix 14.5% (30 kg Kraft Bag)</option>
-          </select>
-        </div>
-
-        <div>
-          <label class="block mb-1.5 text-slate-800">Order Quantity (Bags / Boxes):</label>
-          <input type="number" id="estQty" value="100" min="10" step="10" oninput="calcWeight()" class="w-full bg-slate-50 border border-slate-300 rounded-xl p-3 text-xs focus:ring-2 focus:ring-brand-600 focus:outline-none">
-        </div>
-      </div>
-
-      <div class="bg-brand-50 border border-brand-200 rounded-2xl p-4 flex flex-col sm:flex-row justify-between items-center gap-4">
-        <div>
-          <div class="text-xs text-brand-800 font-semibold">Total Estimated Dispatch Weight:</div>
-          <div class="text-2xl font-black text-brand-900" id="weightDisplay">5,000 Kg (5.00 Metric Tons)</div>
-          <div class="text-[11px] text-slate-500 mt-0.5">Origin: Nimrani Industrial Unit (Dist. Khargone, M.P.)</div>
-        </div>
-        <button onclick="sendEstimateQuote()" class="w-full sm:w-auto bg-brand-700 hover:bg-brand-800 text-white font-bold px-6 py-3 rounded-xl text-xs shadow transition flex items-center justify-center gap-2">
-          <i class="fa-brands fa-whatsapp text-base"></i> Send Dispatch Quote
-        </button>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- DEALER APPLICATION FORM -->
-  <section id="dealer-form" class="py-16 bg-white">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <div class="bg-gradient-to-br from-slate-900 via-brand-dark to-brand-900 text-white rounded-3xl p-8 sm:p-12 shadow-2xl space-y-6">
-        
-        <div class="text-center space-y-2 max-w-2xl mx-auto">
-          <span class="bg-accent-400 text-brand-900 text-xs font-black px-3 py-1 rounded-full uppercase">District Stockist Network</span>
-          <h2 class="text-3xl font-extrabold text-white">Apply for Dealership Point</h2>
-          <p class="text-slate-300 text-xs sm:text-sm">
-            Partner with us for protected regional distribution rights and attractive trade margins.
-          </p>
-        </div>
-
-        <form id="dealerForm" onsubmit="submitForm(event)" class="space-y-4 pt-4">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <label class="block text-xs font-bold text-slate-200 mb-1">Full Name *</label>
-              <input type="text" required placeholder="Full Name" class="w-full bg-slate-800/80 border border-slate-700 rounded-xl p-3 text-xs text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-accent-400">
-            </div>
-            <div>
-              <label class="block text-xs font-bold text-slate-200 mb-1">Firm / Shop Name *</label>
-              <input type="text" required placeholder="Shop or Firm Name" class="w-full bg-slate-800/80 border border-slate-700 rounded-xl p-3 text-xs text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-accent-400">
-            </div>
-          </div>
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <label class="block text-xs font-bold text-slate-200 mb-1">Mobile / WhatsApp *</label>
-              <input type="tel" required placeholder="10-digit Mobile No." class="w-full bg-slate-800/80 border border-slate-700 rounded-xl p-3 text-xs text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-accent-400">
-            </div>
-            <div>
-              <label class="block text-xs font-bold text-slate-200 mb-1">District & State *</label>
-              <input type="text" required placeholder="e.g. Ujjain, Madhya Pradesh" class="w-full bg-slate-800/80 border border-slate-700 rounded-xl p-3 text-xs text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-accent-400">
-            </div>
-          </div>
-
-          <div>
-            <label class="block text-xs font-bold text-slate-200 mb-1">Fertilizer License / GST Number (Optional)</label>
-            <input type="text" placeholder="Enter GST or License Number" class="w-full bg-slate-800/80 border border-slate-700 rounded-xl p-3 text-xs text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-accent-400">
-          </div>
-
-          <button type="submit" class="w-full bg-gradient-to-r from-accent-400 to-accent-500 hover:from-accent-500 hover:to-accent-600 text-brand-900 font-extrabold py-4 rounded-xl shadow-lg transition text-sm">
-            Submit Dealership Inquiry
-          </button>
-        </form>
-
-        <div id="formNotice" class="hidden bg-emerald-900/90 border border-emerald-500 text-emerald-200 p-4 rounded-2xl text-center text-xs">
-          <i class="fa-solid fa-circle-check text-2xl text-emerald-400 mb-1 block"></i>
-          <span class="font-bold text-sm text-white">Dealership Inquiry Submitted!</span><br>
-          Our regional commercial manager will connect with your firm shortly.
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="bg-brand-dark text-slate-300 pt-12 pb-8 border-t border-brand-800">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-xs">
-        
-        <div class="space-y-3">
-          <div class="flex items-center gap-2">
-            <div class="w-8 h-8 bg-accent-400 text-brand-900 rounded-lg flex items-center justify-center font-bold">
-              <i class="fa-solid fa-seedling text-lg"></i>
-            </div>
-            <div class="text-base font-black text-white">AGROLIANCE</div>
-          </div>
-          <p class="text-slate-400 leading-relaxed">
-            Leading Indian agri-inputs manufacturer of FCO certified organic manures and importer of high-purity water soluble specialty fertilizers.
-          </p>
-          <div class="text-slate-400 space-y-0.5">
-            <div><strong>Agroliance CIN:</strong> U20121MP2023PTC068055</div>
-            <div><strong>Swastik Bharat CIN:</strong> U11043MP2026PTC081738</div>
-          </div>
-        </div>
-
-        <div class="space-y-2">
-          <h4 class="font-bold text-white uppercase text-accent-400">Registered Office</h4>
-          <p class="text-slate-400 leading-relaxed">
-            419 Amitesh Nagar, Flat N-203,<br>
-            Scheme No. 59, Khatiwala Tank,<br>
-            Indore, Madhya Pradesh – 452014, India
-          </p>
-        </div>
-
-        <div class="space-y-2">
-          <h4 class="font-bold text-white uppercase text-accent-400">Manufacturing Unit</h4>
-          <p class="text-slate-400 leading-relaxed">
-            Khasra No. 253 / 455-2, Industrial Area,<br>
-            Nimrani, Dist. Khargone,<br>
-            Madhya Pradesh – 451660, India
-          </p>
-        </div>
-
-        <div class="space-y-2">
-          <h4 class="font-bold text-white uppercase text-accent-400">Global Supply Partner</h4>
-          <p class="text-slate-400 leading-relaxed">
-            <strong>RNZ INTERNATIONAL FZE</strong><br>
-            P.O. Box 44560, Dubai, UAE<br>
-            E-mail: rnz@rnz-group.com
-          </p>
-          <div class="pt-1 text-slate-200 font-bold">
-            <i class="fa-solid fa-headset text-accent-400 mr-1"></i> Helpline: +91 88896 59090
-          </div>
-        </div>
-
-      </div>
-
-      <div class="border-t border-brand-800 pt-6 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-400 gap-4">
-        <div>
-          © 2026 Agroliance Phosphate India Pvt. Ltd. & Swastik Bharat Agro Industries Pvt. Ltd.
-        </div>
-        <div class="flex gap-4">
-          <a href="#about" class="hover:text-accent-400">Company</a>
-          <a href="#products" class="hover:text-accent-400">Products</a>
-          <a href="#dealer-form" class="hover:text-accent-400">Dealership</a>
-        </div>
-      </div>
-
-    </div>
-  </footer>
-
-  <!-- FLOATING WHATSAPP BUTTON -->
-  <a href="https://wa.me/918889659090?text=Hello%20Agroliance%20Team,%20I%20would%20like%20to%20inquire%20about%20dealership." target="_blank" class="fixed bottom-6 right-6 z-50 bg-emerald-500 text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-2xl hover:scale-110 transition duration-300">
-    <i class="fa-brands fa-whatsapp"></i>
-  </a>
-
-  <!-- SPEC MODAL -->
-  <div id="specModal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden flex items-center justify-center p-4">
-    <div class="bg-white rounded-3xl max-w-lg w-full p-6 space-y-4 shadow-2xl relative">
-      <button onclick="closeSpec()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-800 text-xl">
-        <i class="fa-solid fa-xmark"></i>
-      </button>
-
-      <div>
-        <span class="bg-brand-100 text-brand-800 text-[10px] font-extrabold px-2.5 py-1 rounded uppercase">Technical Data Sheet</span>
-        <h3 class="text-2xl font-extrabold text-slate-900 mt-1" id="mTitle">Product Title</h3>
-        <div class="text-xs font-bold text-brand-700" id="mSub">Sub Heading</div>
-      </div>
-
-      <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 text-xs space-y-1">
-        <div class="font-bold text-slate-800 border-b border-slate-200 pb-1">Chemical Parameters:</div>
-        <p class="text-slate-600 leading-relaxed" id="mSpecs">Specs detail text...</p>
-      </div>
-
-      <div class="text-xs space-y-1">
-        <div><strong class="text-slate-800">Packaging:</strong> <span id="mPack" class="text-slate-600">--</span></div>
-        <div><strong class="text-slate-800">Crops:</strong> <span id="mCrops" class="text-slate-600">--</span></div>
-      </div>
-
-      <div class="pt-2 flex gap-3">
-        <a id="mWaBtn" href="#" target="_blank" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl text-xs text-center transition">
-          <i class="fa-brands fa-whatsapp mr-1"></i> Quote Request
-        </a>
-        <button onclick="closeSpec()" class="bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold px-4 py-3 rounded-xl text-xs transition">
-          Close
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- JAVASCRIPT -->
+  <!-- JavaScript for Language & Mobile Menu -->
   <script>
-    function toggleMobileNav() {
-      document.getElementById('mobileNav').classList.toggle('hidden');
-    }
+    // Dictionary holding Simple English & Simple Hindi Text
+    const translations = {
+      en: {
+        toggleBtn: "हिंदी",
+        heroTitle: "Eco-Friendly Natural Water Bottles",
+        heroDesc: "100% natural, durable, and good for the planet. Made from eco-friendly materials to help replace single-use plastic.",
+        heroBtn: "Buy Now"
+      },
+      hi: {
+        toggleBtn: "English",
+        heroTitle: "पर्यावरण-अनुकूल प्राकृतिक पानी की बोतलें",
+        heroDesc: "100% प्राकृतिक, मजबूत और पर्यावरण के लिए सुरक्षित। प्लास्टिक कचरे को कम करने के लिए प्राकृतिक सामग्री से बनी।",
+        heroBtn: "अभी खरीदें"
+      }
+    };
 
-    function filterCategory(cat) {
-      const cards = document.querySelectorAll('.p-card');
-      const btns = document.querySelectorAll('#filterBtnGroup .cat-btn');
+    let currentLang = 'en';
 
-      btns.forEach(b => {
-        b.classList.remove('bg-brand-800', 'text-white', 'active');
-        b.classList.add('bg-slate-100', 'text-slate-700');
+    function toggleLanguage() {
+      currentLang = currentLang === 'en' ? 'hi' : 'en';
+      const langData = translations[currentLang];
+
+      // Update text content
+      document.getElementById('langToggle').innerText = langData.toggleBtn;
+      document.getElementById('heroTitle').innerText = langData.heroTitle;
+      document.getElementById('heroDesc').innerText = langData.heroDesc;
+      document.getElementById('heroBtn').innerText = langData.heroBtn;
+
+      // Update nav links
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.innerText = link.getAttribute(`data-${currentLang}`);
       });
-
-      event.currentTarget.classList.remove('bg-slate-100', 'text-slate-700');
-      event.currentTarget.classList.add('bg-brand-800', 'text-white', 'active');
-
-      cards.forEach(c => {
-        if (cat === 'all' || c.dataset.category === cat) {
-          c.classList.remove('hidden');
-        } else {
-          c.classList.add('hidden');
-        }
-      });
     }
 
-    function liveSearch() {
-      const q = document.getElementById('searchInput').value.toLowerCase();
-      document.querySelectorAll('.p-card').forEach(c => {
-        const text = (c.dataset.search || c.dataset.name || '').toLowerCase();
-        if (text.includes(q)) c.classList.remove('hidden');
-        else c.classList.add('hidden');
-      });
-    }
-
-    function showSpec(title, sub, specs, pack, crops) {
-      document.getElementById('mTitle').innerText = title;
-      document.getElementById('mSub').innerText = sub;
-      document.getElementById('mSpecs').innerText = specs;
-      document.getElementById('mPack').innerText = pack;
-      document.getElementById('mCrops').innerText = crops;
-
-      const waMsg = encodeURIComponent(`Inquiry for ${title}`);
-      document.getElementById('mWaBtn').href = `https://wa.me/918889659090?text=${waMsg}`;
-      document.getElementById('specModal').classList.remove('hidden');
-    }
-
-    function closeSpec() {
-      document.getElementById('specModal').classList.add('hidden');
-    }
-
-    function calcWeight() {
-      const sel = document.getElementById('estProduct').value;
-      const qty = parseInt(document.getElementById('estQty').value) || 0;
-      const bagW = parseInt(sel.split('|')[1]) || 50;
-
-      const totalKg = qty * bagW;
-      const totalTons = (totalKg / 1000).toFixed(2);
-      document.getElementById('weightDisplay').innerText = `${totalKg.toLocaleString()} Kg (${totalTons} Metric Tons)`;
-    }
-
-    function sendEstimateQuote() {
-      const sel = document.getElementById('estProduct').value.split('|')[0];
-      const qty = document.getElementById('estQty').value;
-      const wText = document.getElementById('weightDisplay').innerText;
-      const text = encodeURIComponent(`Dispatch Inquiry:\nProduct: ${sel}\nQty: ${qty} units\nWeight: ${wText}`);
-      window.open(`https://wa.me/918889659090?text=${text}`, '_blank');
-    }
-
-    function submitForm(e) {
-      e.preventDefault();
-      document.getElementById('dealerForm').reset();
-      document.getElementById('formNotice').classList.remove('hidden');
-      setTimeout(() => document.getElementById('formNotice').classList.add('hidden'), 5000);
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('active');
     }
   </script>
-
 </body>
 </html>
